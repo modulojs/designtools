@@ -1,0 +1,67 @@
+<DesignUtil></DesignUtil>
+<Template>
+    <h2>Quick CSS Palette</h2>
+    <main>
+        <section>
+            <div style="scheme">
+                {% for index, row in state.palette %}
+                    <div style="background-color: {{ row|get:1 }}; --color-fg: #fff">
+                        <input [state.bind] name="palette.{{ index }}.0" /><strong>:</strong>
+                        <input [state.bind] name="palette.{{ index }}.1" type="color" />
+                    </div>
+                {% endfor %}
+            </div>
+            <hr />
+            <div style="add-section">
+                <input [state.bind] name="name" /><strong>:</strong>
+                <input [state.bind] name="color" type="color" />
+            </div>
+            <button
+                @click:=state.palette.push
+                payload:="[ {{ state.name|json }}, {{ state.color|json }} ]"
+            >Add</button>
+        </section>
+        <section>
+<pre>:host {
+{{ state.palette|cssvars:4 }}
+}</pre>
+        </section>
+    </main>
+</Template>
+
+
+<State
+    name="color"
+    color="#ffffff"
+    palette:='[
+        [ "primary", "#551100" ],
+        [ "secondary", "#951190" ]
+    ]'
+></State>
+
+<Style>
+    :host {
+        font-family: sans-serif;
+    }
+    h2 {
+        font-weight: 100;
+    }
+    main {
+        border: 2px solid black;
+        display: grid;
+        padding: 10px;
+        grid-template-columns: 1fr 1fr;
+    }
+    section {
+        border: 2px solid black;
+        padding: 10px;
+    }
+    input {
+        width: 100px;
+        background: #ffffff00;
+        border: 2px solid var(--color-fg);
+        color: var(--color-fg);
+    }
+</Style>
+
+

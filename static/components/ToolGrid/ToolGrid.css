@@ -1,0 +1,75 @@
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    --editor-height: 50vh;
+}
+
+article {
+    padding-top: 10px;
+    display: block;
+    background: #eee;
+    margin: 20px 10px 30px 0;
+    width: 49.5%;
+    height: var(--editor-height);
+    position: relative;
+    background: #bbbbbbbb;
+    border: 3px solid #bbbbbbbb;
+    box-shadow: 
+        5px 5px 30px inset #ffffff28,
+        5px 5px 30px inset #ffffff28;
+}
+
+article.demo--expanded {
+    width: 99.5%;
+}
+
+h3 {
+    position: absolute;
+    margin: 0;
+    padding: 2px;
+    color: var(--color-fg-semidark);
+    top: -20px;
+    left: 0;
+    width: 220px;
+    font-size: 1.3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    user-select: none;
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    background: #bbbbbbbb;
+    border: 3px solid #ffffff22;
+}
+
+h3:hover {
+    box-shadow: 
+      5px 5px 30px inset #ffff3f28,
+      5px 5px 30px inset #Ffff3f28;
+
+}
+
+h3 > span {
+    opacity: 0.3;
+}
+
+h3:hover > span {
+    opacity: 1;
+}
+
+/* Force the height of the pane-holder to prevent overflow */
+x-DemoEditor .pane-holder {
+    height: var(--editor-height);
+    min-height: var(--editor-height);
+    grid-template-rows: var(--editor-height);
+}
+
+@media (max-width: 992px) {
+    :host {
+        display: block;
+    }
+    article {
+        width: 99.5%;
+    }
+}
+

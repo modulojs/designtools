@@ -1,0 +1,115 @@
+:root {
+    --color-fg-light: #00000011;
+    --color-fg-semilight: #00000044;
+    --color-fg-semi: #00000088;
+    --color-fg-semidark: #000000DD;
+    --color: #B90183;
+    --color-alt: #a2e4b8;
+    --color-outline: #111;
+    --color-content-bg: white;
+    --color-bg: white;
+    --color-fg: black;
+}
+
+html {
+    line-height: 1.15;
+    text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: serif;
+    -webkit-text-size-adjust: 100%;
+    color: var(--color-fg);
+    background-color: var(--color-content-bg);
+}
+
+body {
+    margin: 0;
+}
+
+body.dark-mode {
+    --color-fg: #ccc;
+    --color-fg-semidark: #ffffffDD;
+    --color-fg-semi: #ffffff88;
+    --color-content-bg: black;
+    --color-fg-semilight: #ffffff44;
+}
+
+/* NOTE: This resets EVERY element with tag-level specificity to 
+** border-box. This forces EVERY element to specify border-box. */
+* {
+    box-sizing: border-box;
+}
+
+
+
+/*  Some basic styling for a "DesignToolLayout" container is below */
+.DesignToolLayout {
+    margin: 2vw;
+    padding: 0.1vw;
+    margin-top: 0;
+    box-shadow: 
+      5px 5px 30px #00000022,
+      5px 5px 30px #00000022;
+    background: #ffffffDD; /* semi light */
+    color: #000000DD;
+}
+
+.DesignToolLayout {
+    min-height: calc(100vh - 100px);
+}
+
+.DesignToolLayout-page-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.DesignToolLayout-page-content > h1,
+.DesignToolLayout-page-content > p,
+.DesignToolLayout-page-content > p > strong {
+    font-size: 2.5rem;
+    text-align: left;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 
+      5px 5px 30px inset #00003f08,
+      5px 5px 30px inset #00003f08;
+}
+.DesignToolLayout-page-content > h1 {
+    font-size: 1.5rem;
+}
+.DesignToolLayout-page-content > p {
+    font-size: 0.9rem;
+}
+.DesignToolLayout-page-content > p > strong {
+    font-size: 0.9rem;
+}
+
+.DesignToolLayout-page-content code {
+    border-bottom: 1px dashed gray;
+}
+
+.DesignToolLayout-page-content a {
+    color: #000000DD;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--color);
+}
+.DesignToolLayout-page-content > p {
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 
+      5px 5px 30px inset #00003f08,
+      5px 5px 30px inset #00003f08;
+}
+
+.DesignToolLayout-page-content a:hover {
+    border-bottom: 1px solid var(--color);
+}
+
+.DesignToolLayout-page-content x-ToolGrid {
+}
+
+@media (max-width: 992px) {
+    .DesignToolLayout-page-content h1 {
+        text-align: center;
+        padding-top: 5px;
+    }
+}
+

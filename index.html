@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DesignTools</title>
+    <meta charset="utf8" />
+    <meta charset="utf8" />
+    <meta name="title" content="{{ props.pagetitle }}">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="revisit-after" content="30 days">
+
+    <link rel="stylesheet" href="./static/css/site.css" />
+
+    <script Modulo
+        src="./static/js/Modulo.js"
+        -src="./static/"
+    ></script>
+
+</head>
+<body>
+    <div class="DesignToolLayout">
+        <main class="DesignToolLayout-page-content">
+            <h1>Design Tools</h1>
+
+            <p><strong>Saving instructions:</strong> Any of these tools can be
+            easily saved, or even modified. First, click the "Pencil" icon to
+            see the source code for the tool. They are all written with the <a
+            href="https://modulojs.org/">Modulo.js</a> framework. Then, click
+            the "SAVE" button (possibly hidden below the "RUN").</p>
+
+            <p><strong>A collection of tools, free and open source, for designers and
+            web developers everywhere.</strong></p>
+        </main>
+        <x-ToolGrid></x-ToolGrid>
+    </div>
+
+    <footer class="DesignToolLayout-page-footer">
+        &copy; {{ script.currentYear }} | Michael Bethencourt |
+        Documentation Distributed Under <a rel="license"
+        href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+        License</a>
+        | <a href="https://modulojs.org/" title="Made with Modulo.js" target="_blank">%</a>
+    </footer>
+</body>
+</html>

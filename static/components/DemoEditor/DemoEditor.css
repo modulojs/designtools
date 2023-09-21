@@ -1,0 +1,196 @@
+.pane-holder {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr var(--divider-width) var(--right-width);
+    grid-template-rows: 1fr;
+}
+
+.pane-holder--collapsed {
+    display: block;
+}
+
+.pane-holder--collapsed .demo-area {
+    justify-content: center;
+    align-items: center;
+}
+
+.pane {
+    display: block;
+    height: 100%;
+    background: var(--color-bg);
+}
+
+.demo-area {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    /* NOTE: Disabled */
+    /*background: var(--color-fg-light);*/
+    padding: 15px;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    border: 1px dotted var(--color-fg-semi);
+    border-top: none;
+    border-bottom: none;
+    padding: 2px;
+    transition: background-color 0.8s;
+}
+
+.toolbar--settings {
+    /*height: auto;*/
+    background-color: var(--color-alt);
+    text-align: left;
+}
+.toolbar--settings button {
+    text-align: left;
+}
+
+.toolbar--autohide:hover {
+    background-color: var(--color-alt);
+}
+
+/* First and last buttons are hidden by default */
+.toolbar--autohide > button:first-child,
+.toolbar--autohide > button:last-child {
+    opacity: 0;
+}
+
+
+.toolbar--autohide:hover > button:first-child,
+.toolbar--autohide:hover > button:last-child {
+    opacity: 1.0;
+}
+
+/* Whenever you hover a button always max opacity */
+.toolbar--autohide:hover > button:hover {
+    opacity: 1.0;
+}
+
+.toolbar button,
+.toolbar label {
+    color: var(--color-fg);
+    font-weight: bolder;
+    display: inline-block;
+    border: 2px solid var(--color-fg);
+    border-bottom-width: 4px;
+    margin-bottom: -2px;
+    border-radius: 1px 3px 1px 3px;
+    background: var(--color-bg);
+    padding: 8px 1px 8px 1px;
+    text-transform: uppercase;
+    box-shadow: 1px 1px 0 var(--color-fg);
+    transition: box-shadow 0.3s,
+                opacity 0.15s 0.5s,
+                background 0.15s,
+                border-color 0.2s;
+}
+
+.toolbar button {
+    cursor: pointer;
+}
+
+.toolbar button span {
+    font-weight: lighter;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.toolbar--small button {
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.toolbar.toolbar--settings label {
+    border-radius: 1px;
+    border-bottom-width: 1px;
+}
+
+.toolbar.toolbar--settings label,
+.toolbar.toolbar--settings button {
+    padding: 6px;
+}
+
+
+.toolbar button:visited,
+.toolbar button:active,
+.toolbar button.selected {
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-weight: bold;
+    background: var(--color);
+}
+
+.toolbar button.selected {
+    border-color: var(--color);
+    background: var(--color);
+    box-shadow: 0 0 0 8px var(--color);
+    color: var(--color-bg);
+}
+
+.toolbar button:hover {
+    border-color: var(--color);
+}
+
+.usage-banner {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--color-alt);
+    padding: 5px 35px 5px 35px;
+    color: var(--color-bg);
+    font-weight: bolder;
+    border-radius: 2px;
+}
+
+.usage-border {
+    height: 100%;
+    border: 5px dashed var(--color-alt);
+    padding: 5px;
+    position: relative;
+}
+
+@media (max-width: 992px) {
+    .pane-holder {
+        min-height: 350px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr var(--divider-height) var(--demo-height);
+    }
+
+    .toolbar {
+        flex-direction: row;
+        border: 1px dotted var(--color-fg-semi);
+        border-left: none;
+        border-right: none;
+        padding: 0;
+    }
+
+    .toolbar button {
+        opacity: 1 !important;
+        padding: 1px 30px 1px 30px; /* add padding, make it easier to press */
+        color: var(--color-fg-semidark);
+    }
+    .toolbar--small button {
+        font-size: 1rem;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .page-nav-right {
+        display: none;
+    }
+
+    .toolbar button {
+        padding: 1px 5px 1px 5px; /* add padding, make it easier to press */
+    }
+    .toolbar--small button {
+        font-size: 0.9rem;
+    }
+}
+

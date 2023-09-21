@@ -1,0 +1,49 @@
+<div class="editor-wrapper" @click:=script.updateDimensions>
+    <div class="editor-underlay-container"
+        style="
+                width:  {% if state.width %}  {{ state.width }}px  {% else %} 100% {% endif %};
+                height: {% if state.height %} {{ state.height }}px {% else %} 100% {% endif %};
+        ">
+        <div class="editor-underlay-offset-wrapper"
+            style="
+                {% if state.scrollTop %} top: -{{ state.scrollTop }}px; {% endif %}
+                {% if state.scrollLeft %} left: -{{ state.scrollLeft }}px; {% endif %}
+                {% if state.width %}    width: {{ state.width }}px; {% endif %}
+            ">
+            <{{ props.component|default:"x-SyntaxHighlighter" }}
+                value="{{ state.value }}"
+                number="{{ props.number|default:'on' }}"
+                style="
+                    font-size: 16px;
+                    font-family: monospace;
+                    text-align: start;
+                    resize: none;
+                    {% if props.wrap %}
+                        white-space: pre-wrap;
+                        overflow-wrap: break-word;
+                    {% else %}
+                        white-space: pre;
+                    {% endif %}
+                    box-sizing: border-box;
+                "
+            ></{{ props.component|default:"x-SyntaxHighlighter" }}>
+        </div>
+    </div>
+
+    <textarea
+        [script.text]
+        @scroll:=script.updateDimensions
+        data-gramm="false"
+        name="{{ props.name|default:'editor' }}"
+        spellcheck="{{ props.spellcheck|default:'false' }}"
+        style="
+          {% if props.wrap %}
+              white-space: pre-wrap;
+              overflow-wrap: break-word;
+          {% else %}
+              white-space: pre;
+          {% endif %}
+        "
+    ></textarea>
+</div>
+

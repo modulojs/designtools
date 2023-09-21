@@ -1,0 +1,135 @@
+<!-- Component definitions for the embedded editor and syntax highlighter are
+contained below -->
+<Component name="DemoEditor">
+    <Props
+        value
+        src
+        preview
+        example
+        editex
+        component
+        collapsed
+        includes
+    ></Props>
+    <Template
+        -src="./DemoEditor/DemoEditor.html"
+    ></Template>
+    <State
+        divider:=310
+        demo=""
+        value=""
+        component-name=""
+        example-code=""
+        is-fetching:=null
+        show-editor:=null
+        show-menu:=null
+        show-example:=null
+    ></State>
+    <Script
+        lifecyle="initialized"
+        -src="./DemoEditor/DemoEditor.js"
+    ></Script>
+    <Style
+        -src="./DemoEditor/DemoEditor.css"
+    ></Style>
+</Component>
+
+<!-- Displays a single tool, embedded on page -->
+<Component name="DemoBox">
+    <Props
+        value
+        component
+        example
+    ></Props>
+    <Template>
+        <div [modulodemo.demo]></div>
+    </Template>
+    <!-- Hook the ModuloDemo CPart directly to Props -->
+    <ModuloDemo
+        value="props.value"
+        component="props.component"
+        example="props.example"
+    ></ModuloDemo>
+</Component>
+
+<Component name="SyntaxEditor" rerender="manual">
+    <Props
+        value
+        name
+        fast
+        spellcheck
+        component
+        debounce-time
+    ></Props>
+    <Template
+        -src="./SyntaxEditor/SyntaxEditor.html"
+    ></Template>
+    <State
+        selection-start:=0
+        scroll-top:=0
+        scroll-left:=0
+        width:=0
+        height:=0
+        value=""
+        received-value:=null
+    ></State>
+    <Script
+        -src="./SyntaxEditor/SyntaxEditor.js"
+    ></Script>
+    <Style
+        -src="./SyntaxEditor/SyntaxEditor.css"
+    ></Style>
+</Component>
+
+<Component name="SyntaxHighlighter">
+    <Props
+        value
+        mode
+        fix
+    ></Props>
+    <Script -src="./SyntaxHighlighter/highlight/highlight.min.js">
+        modulo.register('util', function syntaxHighlight(text, opts) {
+            return hljs.highlight(text, opts).value;
+        });
+    </Script>
+    <Script
+        -src="./SyntaxHighlighter/SyntaxHighlighter.js"
+    ></Script>
+    <Style
+        -src="./SyntaxHighlighter/custom-scheme.css"
+    ></Style>
+</Component>
+
+
+<!-- TODO: Add a GET-based form for filtering? Should just do pushstate though? -->
+<Component name="ToolGrid">
+    <Template
+        -src="./ToolGrid/ToolGrid.html"
+    ></Template>
+    <State
+        selected:=null
+    ></State>
+    <StaticData
+        -src="../designtools/index.js"
+    ></StaticData>
+    <Script>
+        // For filenames -- get the title of the Design Tool
+        function getTitle(s) {
+            const parts = s.split('.')[0].split('/');
+            return parts[parts.length - 1];
+        }
+        modulo.register('templateFilter', getTitle);
+
+        function showDemo(demoFileName) {
+            state.selected = demoFileName;
+        }
+        function prepareCallback() {
+            const examples = [];
+            return { examples };
+        }
+    </Script>
+    <Style
+        -src="./ToolGrid/ToolGrid.css"
+    ></Style>
+</Component>
+
