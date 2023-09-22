@@ -1,4 +1,5 @@
-:host {
+main {
+    margin-left: -20px;
     display: flex;
     flex-wrap: wrap;
     --editor-height: 50vh;
@@ -7,12 +8,10 @@
 article {
     padding-top: 10px;
     display: block;
-    background: #eee;
     margin: 20px 10px 30px 0;
     width: 49.5%;
     height: var(--editor-height);
     position: relative;
-    background: #bbbbbbbb;
     border: 3px solid #bbbbbbbb;
     box-shadow: 
         5px 5px 30px inset #ffffff28,
@@ -67,6 +66,7 @@ x-DemoEditor .pane-holder {
 @media (max-width: 992px) {
     :host {
         display: block;
+        margin: 0;
     }
     article {
         width: 99.5%;

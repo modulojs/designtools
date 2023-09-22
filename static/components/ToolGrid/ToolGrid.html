@@ -1,31 +1,32 @@
-{% for example in staticdata.components %}
-    <article class="{% if state.selected == example.file %}demo--expanded{% endif %}">
-        {% if state.selected == example.file %}
-            <h3 @click:=script.showDemo payload:=null>
-                <span></span><tt>{{ example.file|getTitle }}</tt><span alt="Hide icon (x shaped)">✖</span>
-            </h3>
-        {% else %}
-            <h3 @click:=script.showDemo payload="{{ example.file }}">
-                <span alt="Edit icon (pencil shaped)">✎</span><tt>{{ example.file|getTitle }}</tt><span></span>
-            </h3>
-        {% endif %}
-        {% if state.selected == example.file %}
-            <x-DemoEditor
-                src="{{ example.file }}"
-                includes="{{ example.includes|default:'' }}"
-                example="{{ example.usage|default:'' }}"
-                collapsed:=false
-                id="de_for_{{ example.file|getTitle }}"
-            ></x-DemoEditor>
-        {% else %}
-            <x-DemoEditor
-                src="{{ example.file }}"
-                includes="{{ example.includes|default:'' }}"
-                example="{{ example.usage|default:'' }}"
-                collapsed:=true
-                id="de_for_{{ example.file|getTitle }}"
-            ></x-DemoEditor>
-        {% endif %}
-    </article>
-{% endfor %}
-
+<main>
+  {% for example in staticdata.components %}
+      <article class="{% if state.selected == example.file %}demo--expanded{% endif %}">
+          {% if state.selected == example.file %}
+              <h3 @click:=script.showDemo payload:=null>
+                  <span></span><tt>{{ example.file|getTitle }}</tt><span alt="Hide icon (x shaped)">✖</span>
+              </h3>
+          {% else %}
+              <h3 @click:=script.showDemo payload="{{ example.file }}">
+                  <span alt="Edit icon (pencil shaped)">✎</span><tt>{{ example.file|getTitle }}</tt><span></span>
+              </h3>
+          {% endif %}
+          {% if state.selected == example.file %}
+              <x-DemoEditor
+                  src="{{ example.file }}"
+                  includes="{{ example.includes|default:'' }}"
+                  example="{{ example.usage|default:'' }}"
+                  collapsed:=false
+                  id="de_for_{{ example.file|getTitle }}"
+              ></x-DemoEditor>
+          {% else %}
+              <x-DemoEditor
+                  src="{{ example.file }}"
+                  includes="{{ example.includes|default:'' }}"
+                  example="{{ example.usage|default:'' }}"
+                  collapsed:=true
+                  id="de_for_{{ example.file|getTitle }}"
+              ></x-DemoEditor>
+          {% endif %}
+      </article>
+  {% endfor %}
+</main>

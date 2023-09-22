@@ -43,7 +43,7 @@ body.dark-mode {
 
 /*  Some basic styling for a "DesignToolLayout" container is below */
 .DesignToolLayout {
-    margin: 2vw;
+    margin: 20px;
     padding: 0.1vw;
     margin-top: 0;
     box-shadow: 

@@ -1,6 +1,6 @@
 {% if state.showEditor %}
     <div class="pane-holder" style="
-            --right-width: {{ state.divider|multiply:'-1'|add:550 }}px;
+            --right-width: {{ state.divider|multiply:'-1'|add:1000 }}px;
             --divider-width: 45px;
             --divider-height: 35px;
             --demo-height: 120px;
@@ -14,7 +14,7 @@
                         Edit Usage
                     </label>
                     <label>
-                        <input [state.bind] name="divider" type="range" min="50" max="500" step="10" />
+                        <input [state.bind] name="divider" type="range" min="50" max="900" step="10" />
                         Size
                     </label>
                     <button @click:=script.open>

@@ -23,6 +23,14 @@
     setupFathom('IDJPE');
 </script>
 
+<!-- TODO: Version lock instead of master -->
+<script Configuration -src="https://raw.githubusercontent.com/elchininet/ColorTranslator/master/dist/web/colortranslator.js">
+    colortranslator.name = 'colortranslator'; // Give it a name to register by
+    modulo.register('util', colortranslator);
+</script>
+<!--<script Configuration -src="https://unpkg.com/colortranslator.js@3.0.2/dist/web/colortranslator.js"> </script>-->
+<!--<script Configuration -src="https://cdn.jsdelivr.net/npm/ac-colors@1/dist/ac-colors.min.js"> </script>-->
+
 <!-- Brings in ModuloDemo CPart -->
 <script Configuration -src="./cparts/ModuloDemo.js"></script>
 
